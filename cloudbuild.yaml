@@ -15,7 +15,7 @@ steps:
     args: ['utils/sync_dags.py']
     env:
       - 'COMPOSER_BUCKET=${_COMPOSER_BUCKET}'
-    conditions:
+    when:
       - branch_name: 'main'
 
 substitutions:
