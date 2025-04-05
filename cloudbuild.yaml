@@ -2,7 +2,7 @@ steps:
   # Install dependencies
   - name: 'python:3.9'
     entrypoint: 'pip'
-    args: ['install', '-r', 'requirements.txt']
+    args: ['install', '-r', 'requirements.txt', '--user']
 
   # Run DAG validation tests
   - name: 'python:3.9'
