@@ -6,8 +6,8 @@ steps:
 
   # Run DAG validation tests
   - name: 'python:3.9'
-    entrypoint: 'pytest'
-    args: ['tests/test_dags.py']
+    entrypoint: 'python'
+    args: ['-m', 'pytest', 'tests/test_dags.py']
 
   # Sync DAGs to Composer bucket (only on merge to main)
   - name: 'python:3.9'
