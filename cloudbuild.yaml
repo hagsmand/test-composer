@@ -18,7 +18,6 @@ steps:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-  region: 'asia-southeast1'  # Adding supported region
 
 substitutions:
   _COMPOSER_BUCKET: 'asia-southeast1-test-compos-171ca46c-bucket'  # e.g., us-central1-composer-dev-abc123-dags
