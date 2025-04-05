@@ -4,12 +4,21 @@ steps:
     entrypoint: 'pip'
     args: ['install', '-r', 'requirements.txt', '--user']
 
+  # Initialize Airflow DB
+  - name: 'python:3.9'
+    entrypoint: 'python'
+    args: ['-c', 'import airflow.utils.db; airflow.utils.db.resetdb()']
+    env:
+      - 'AIRFLOW_HOME=/workspace'
+
   # Run DAG validation tests
   - name: 'python:3.9'
     entrypoint: 'python'
     args: ['-m', 'pytest', 'tests/test_dags.py']
+    env:
+      - 'AIRFLOW_HOME=/workspace'
 
-  # Sync DAGs to Composer bucket (only on merge to main)
+  # Sync DAGs to Composer bucket
   - name: 'python:3.9'
     entrypoint: 'python'
     args: ['utils/sync_dags.py']
